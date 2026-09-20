@@ -1,0 +1,134 @@
+/* ──────────────────────────────────────────────
+ *   Waybar – Material You pill (niri)
+ *   colors via matugen → colors.css
+ * ────────────────────────────────────────────── */
+@import "colors.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "SF Pro", sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    min-height: 0;
+    box-shadow: none;
+    outline: none;
+}
+
+window#waybar {
+    background: transparent;
+    color: @on_surface;
+}
+
+.modules-center {
+    background: @surface;
+    border-radius: 14px;
+    padding: 0 2px;
+    margin: 0;
+}
+
+/* ── Clock ───────────────────────────────────── */
+#clock {
+    color: @on_surface;
+    padding: 0 10px 0 12px;
+}
+
+/* ── Workspaces ──────────────────────────────── */
+#workspaces {
+    background: transparent;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    all: unset;
+    color: alpha(@on_surface, 0.45);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 0 5px;
+    margin: 4px 1px;
+    border-radius: 9999px;
+    min-width: 16px;
+    min-height: 16px;
+    transition: all 0.15s ease;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background: @primary;
+    color: @on_primary;
+    padding: 0 8px;
+    margin: 4px 1px;
+}
+
+#workspaces button.urgent {
+    background: @error;
+    color: @on_error;
+}
+
+/* ── PulseAudio ──────────────────────────────── */
+#pulseaudio {
+    color: @on_surface;
+    padding: 0 8px;
+}
+
+#pulseaudio.muted {
+    color: alpha(@on_surface, 0.35);
+}
+
+/* ── Network ─────────────────────────────────── */
+#network {
+    color: @on_surface;
+    padding: 0 8px;
+}
+
+#network.disconnected {
+    color: @error;
+}
+
+/* ── Bluetooth ───────────────────────────────── */
+#bluetooth {
+    color: @on_surface;
+    padding: 0 8px;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: alpha(@on_surface, 0.3);
+}
+
+#bluetooth.connected {
+    color: @primary;
+}
+
+/* ── Power toggle ────────────────────────────── */
+#custom-power {
+    color: @on_surface;
+    padding: 0 8px;
+}
+
+/* ── Battery pill ────────────────────────────── */
+#battery {
+    background: @primary;
+    color: @on_primary;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 0 10px;
+    margin: 4px 4px 4px 4px;
+}
+
+#battery.charging,
+#battery.plugged {
+    background: @primary;
+    color: @on_primary;
+}
+
+#battery.warning {
+    background: @secondary;
+    color: @on_secondary;
+}
+
+#battery.critical:not(.charging) {
+    background: @error;
+    color: @on_error;
+}
