@@ -6,6 +6,7 @@ DOT="$(cd "$(dirname "$0")" && pwd)"
 # --- river (REPLACED NIRI) ---
 mkdir -p "$DOT/config/river"
 cp ~/.config/river/init                 "$DOT/config/river/"
+cp ~/.config/wlogout/layout             "$DOT/config/wlogout/"       2>/dev/null || true
 
 # --- waybar ---
 cp ~/.config/waybar/config.jsonc        "$DOT/config/waybar/"
