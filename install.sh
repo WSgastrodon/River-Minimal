@@ -22,7 +22,7 @@ link "$DOT/config/matugen/config.toml"    ~/.config/matugen/config.toml
 rsync -a "$DOT/config/matugen/templates/" ~/.config/matugen/templates/
 link "$DOT/config/environment.d/90-wayland-perf.conf" \
      ~/.config/environment.d/90-wayland-perf.conf
-
+link "$DOT/config/wlogout/layout"          ~/.config/wlogout/layout
 # generated files: copy once so apps work before first matugen run
 # REMOVED NIRI TARGETS
 cp -n "$DOT/config/foot/rice-theme.ini"    ~/.config/foot/rice-theme.ini    2>/dev/null || true
