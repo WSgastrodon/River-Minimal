@@ -1,0 +1,33 @@
+# matugen — wallpaper → every app
+[config]
+reload_apps = false
+set_wallpaper = false
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+# Refreshes Waybar instantly to paint new colors without breaking your window manager layout
+post_hook = 'killall -SIGUSR2 waybar'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/templates/fuzzel.ini'
+output_path = '~/.config/fuzzel/fuzzel.ini'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako.conf'
+output_path = '~/.config/mako/config'
+post_hook = 'makoctl reload'
+
+[templates.foot]
+input_path = '~/.config/matugen/templates/foot.ini'
+output_path = '~/.config/foot/rice-theme.ini'
+
+# REMOVED [templates.niri] BLOCK COMPLETELY
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
