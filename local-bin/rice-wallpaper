@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# rice-wallpaper — wallpaper-driven theming only (no preset colour themes).
+# The palette ALWAYS follows the chosen wallpaper via matugen.
+# usage: rice-wallpaper [random|next|list|boot|/abs/path/to/img]
+set -u
+WPDIR="$HOME/Pictures/_wallpapers"
+STATE_DIR="$HOME/.local/state/rice"
+mkdir -p "$STATE_DIR"
+
+mapfile -t walls < <(find -L "$WPDIR" -maxdepth 1 -type f \
+    \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.bmp' \) | sort)
+[ ${#walls[@]} -eq 0 ] && { notify-send -u critical "rice" "no wallpapers in $WPDIR"; exit 1; }
+
+idx_file="$STATE_DIR/wp"
+last=$(cat "$idx_file" 2>/dev/null || echo -1)
+
+pick_next() {
+    local n=$(( (last + 1 + RANDOM) % ${#walls[@]} ))
+    [ "$n" = "$last" ] && n=$(( (n + 1) % ${#walls[@]} ))
+    echo "$n"
+}
+
+f=""
+case "${1:-random}" in
+    list)  printf '%s\n' "${walls[@]}" ; exit 0 ;;
+    next)  n=$(( (last + 1) % ${#walls[@]} )); echo "$n" > "$idx_file"; f="${walls[$n]}" ;;
+    random|"") n=$(pick_next); echo "$n" > "$idx_file"; f="${walls[$n]}" ;;
+    boot)
+        if [ -f "$STATE_DIR/wall" ] && [ -f "$(cat "$STATE_DIR/wall")" ]; then
+            f="$(cat "$STATE_DIR/wall")"
+        else
+            f="${walls[$(pick_next)]}"
+        fi
+        ;;
+    *)
+        if [ -f "${1}" ]; then
+            f="$1"
+        else
+            f="$(printf '%s\n' "${walls[@]}" | grep -E "/${1//./\\.}$" | head -1)"
+            [ -z "$f" ] && { notify-send -u critical "rice" "no wallpaper: $1"; exit 1; }
+        fi
+        for i in "${!walls[@]}"; do [ "${walls[$i]}" = "$f" ] && echo "$i" > "$idx_file"; done
+        ;;
+esac
+
+[ -n "$f" ] || f="${walls[$(pick_next)]}"
+
+pkill -x swaybg 2>/dev/null
+sleep 0.1
+setsid nohup swaybg -m fill -i "$f" >/dev/null 2>&1 < /dev/null &
+echo "$f" > "$STATE_DIR/wall"
+
+# wallpaper-driven palette: retint every app (waybar, fuzzel, mako, foot,
+# niri borders, gtk/thunar) via matugen templates + hooks
+matugen image "$f" --mode dark -t scheme-tonal-spot --prefer lightness >/dev/null 2>&1 || true

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# rice-colors — current wallpaper palette, theme-free (from matugen colors.css).
+# Sources nothing; prints export lines for the classic rice var names so
+# rice-power / rice-lock / etc. keep working after themes were removed.
+#
+# usage:  eval "$(rice-colors)"     (exports BG SURFACE SURFACE2 TEXT DIM
+#                                    ACCENT ACCENT2 RED GREEN BORDER, no '#')
+set -u
+CSS="$HOME/.config/waybar/colors.css"
+[ -f "$CSS" ] || { echo "export BG=101418 SURFACE=272a2e SURFACE2=313539 TEXT=e0e2e8 DIM=c2c7ce ACCENT=98ccf9 ACCENT2=b8c8d9 RED=ffb4ab GREEN=d1bfe7 BORDER=8c9198"; exit 0; }
+
+c() { grep -m1 "@define-color $1 " "$CSS" | sed -E 's/.*#([0-9a-fA-F]{6,8}).*/\1/' | cut -c1-6; }
+
+BG=$(c background)
+SURFACE=$(c surface)
+SURFACE2=$(c surface_variant)
+TEXT=$(c on_surface)
+DIM=$(c on_surface_variant)
+ACCENT=$(c primary)
+ACCENT2=$(c secondary)
+RED=$(c error)
+GREEN=$(c tertiary)
+BORDER=$(c outline)
+
+[ -n "$BG" ] || BG=101418
+[ -n "$SURFACE" ] || SURFACE=272a2e
+[ -n "$SURFACE2" ] || SURFACE2=313539
+[ -n "$TEXT" ] || TEXT=e0e2e8
+[ -n "$DIM" ] || DIM=c2c7ce
+[ -n "$ACCENT" ] || ACCENT=98ccf9
+[ -n "$ACCENT2" ] || ACCENT2=b8c8d9
+[ -n "$RED" ] || RED=ffb4ab
+[ -n "$GREEN" ] || GREEN=d1bfe7
+[ -n "$BORDER" ] || BORDER=8c9198
+
+printf 'export BG=%s SURFACE=%s SURFACE2=%s TEXT=%s DIM=%s ACCENT=%s ACCENT2=%s RED=%s GREEN=%s BORDER=%s\n' \
+    "$BG" "$SURFACE" "$SURFACE2" "$TEXT" "$DIM" "$ACCENT" "$ACCENT2" "$RED" "$GREEN" "$BORDER"
