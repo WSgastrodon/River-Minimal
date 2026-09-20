@@ -31,3 +31,10 @@ output_path = '~/.config/gtk-3.0/gtk.css'
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.river]
+input_path = '~/.config/matugen/templates/river-colors.sh'
+output_path = '~/.config/river/river-colors.sh'
+# Executes the newly generated script instantly to repaint your borders
+post_hook = 'bash ~/.config/river/river-colors.sh'
+
