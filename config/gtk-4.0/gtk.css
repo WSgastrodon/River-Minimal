@@ -1,0 +1,74 @@
+/* wallpaper-driven GTK theme — adw-gtk3/libadwaita apps read these tokens,
+   and Thunar (GTK3) picks them up via ~/.config/gtk-3.0/gtk.css */
+@define-color accent_color #95cdf7;
+@define-color accent_fg_color #00344d;
+@define-color accent_bg_color #95cdf7;
+@define-color window_bg_color #181c20;
+@define-color window_fg_color #e0e3e8;
+@define-color headerbar_bg_color #1c2024;
+@define-color headerbar_fg_color #e0e3e8;
+@define-color popover_bg_color #262a2e;
+@define-color popover_fg_color #e0e3e8;
+@define-color sidebar_bg_color #1c2024;
+@define-color sidebar_fg_color #e0e3e8;
+@define-color selected_bg_color #004c6e;
+@define-color selected_fg_color #c9e6ff;
+
+/* general surface + text contrast */
+window, .background {
+    background-color: @window_bg_color;
+    color: @window_fg_color;
+}
+headerbar, .titlebar {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+}
+popover, menu, .popover {
+    background-color: @popover_bg_color;
+    color: @popover_fg_color;
+}
+
+/* selection stays clearly readable on any wallpaper palette */
+selection, *:selected {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+/* ---- Thunar / Caja / GNOME Files (GTK3 file managers) ---- */
+/* sidebar: dark surface, cool tinted from wallpaper */
+PlacesSidebar, .sidebar, treeview.sidebar {
+    background-color: @sidebar_bg_color;
+    color: @sidebar_fg_color;
+}
+.places-row:selected,
+treeview.sidebar row:selected,
+.sidebar row:hover {
+    background-color: @selected_bg_color;
+    color: @selected_fg_color;
+}
+
+/* main file view */
+.thunar .view, .thunar treeview,
+.nautilus-window .view, MacFileBrowser, .caja-view {
+    background-color: @window_bg_color;
+    color: @window_fg_color;
+}
+
+/* path bar / location bar (Thunar) */
+.thunar toolbar, .thunar .location-bar, .thunar entry {
+    background-color: @popover_bg_color;
+    color: @popover_fg_color;
+}
+
+/* status bar */
+.thunar .statusbar, .thunar statusbar {
+    color: @window_fg_color;
+}
+
+/* scrollbar, hover, active rows — subtle wallpaper-tinted contrast */
+.scrollbar slider {
+    background-color: @accent_color;
+}
+row:hover {
+    background-color: mix(@window_bg_color, @sidebar_bg_color, 0.5);
+}
