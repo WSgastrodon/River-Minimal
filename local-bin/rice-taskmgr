@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# rice-taskmgr — floating btop
-exec foot -a rice.btop btop

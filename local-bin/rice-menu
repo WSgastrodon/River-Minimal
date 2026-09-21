@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# rice-menu — delegates to the ported control center (Mod+Comma)
-exec "$HOME/.config/waybar/scripts/control-center.sh"
