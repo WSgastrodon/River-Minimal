@@ -23,8 +23,8 @@ rsync -a "$DOT/config/matugen/templates/" ~/.config/matugen/templates/
 link "$DOT/config/environment.d/90-wayland-perf.conf" \
      ~/.config/environment.d/90-wayland-perf.conf
 link "$DOT/config/wlogout/layout"          ~/.config/wlogout/layout
+
 # generated files: copy once so apps work before first matugen run
-# REMOVED NIRI TARGETS
 cp -n "$DOT/config/foot/rice-theme.ini"    ~/.config/foot/rice-theme.ini    2>/dev/null || true
 cp -n "$DOT/config/waybar/colors.css"      ~/.config/waybar/colors.css      2>/dev/null || true
 cp -n "$DOT/config/fuzzel/fuzzel.ini"      ~/.config/fuzzel/fuzzel.ini      2>/dev/null || true
@@ -38,9 +38,14 @@ cp -n "$DOT/editors/nvim/init.lua"         ~/.config/nvim/init.lua           2>/
 cp -n "$DOT/editors/nanorc"                ~/.config/nano/nanorc             2>/dev/null || true
 
 # --- rice scripts + layout ---
-mkdir -p ~/.local/bin ~/.config/niri-rice
-install -m755 "$DOT"/local-bin/rice-* ~/.local/bin/
-rsync -a "$DOT/config/niri-rice/" ~/.config/niri-rice/
+# CLEANED: Purged the old niri-rice folder structures entirely
+mkdir -p ~/.local/bin
+if [ -d "$DOT/local-bin" ] && [ -n "$(ls -A "$DOT/local-bin" 2>/dev/null)" ]; then
+    install -m755 "$DOT"/local-bin/rice-* ~/.local/bin/
+fi
+
+# Automatically flag execution permissions for your River startup script
+chmod +x ~/.config/river/init 2>/dev/null || true
 
 # --- wallpapers ---
 if [ -d "$DOT/wallpapers" ] && [ -n "$(ls -A "$DOT/wallpapers")" ]; then
@@ -50,7 +55,6 @@ if [ -d "$DOT/wallpapers" ] && [ -n "$(ls -A "$DOT/wallpapers")" ]; then
 fi
 
 # --- dependencies check ---
-# REMOVED PACKAGES ASSUMING BLUETOOTH / WLOGOUT / NIRI
 echo "checking packages..."
 for c in river waybar swaybg swayidle mako fuzzel foot cliphist wl-paste matugen \
          brightnessctl playerctl wpctl pamixer nmcli grim slurp python; do
