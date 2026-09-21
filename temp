@@ -1,0 +1,4 @@
+installed
+river-classic
+mkdir -p ~/.config/river
+cp  usr/share/river-classic/example/init ~/.config/river/init
