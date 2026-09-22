@@ -1,6 +1,6 @@
 #!/bin/sh
 
-riverctl keybard-layout gb
+riverctl keyboard-layout gb
 riverctl set-repeat 35 200
 
 riverctl map normal Super Return spawn foot
