@@ -1,4 +1,36 @@
-installed
-river-classic
-mkdir -p ~/.config/river
-cp  usr/share/river-classic/example/init ~/.config/river/init
+#!/usr/bin/env bash
+
+# Exit immediately if any command fails, and treat unset variables as an error
+set -euo pipefail
+
+# Visual markers for scannability
+INFO="[INFO]"
+SUCCESS="[SUCCESS]"
+ERROR="[ERROR]"
+
+echo "$INFO Starting the environment installation..."
+
+# Step 1: Check if running on Arch Linux
+if [ ! -f /etc/arch-release ]; then
+    echo "$ERROR This script is intended strictly for Arch Linux." >&2
+    exit 1
+fi
+
+# Step 2: System Update & Pacman Installs
+echo "$INFO Installing system packages..."
+sudo pacman -Syu --needed --noconfirm 
+sudo pacman -S foot firefox capitaine-cursors river-classic 
+
+# Step 3: Create User Configuration Directories
+echo "$INFO Setting up configuration directories..."
+mkdir -p "$HOME/.config/river"
+mv $HOME/River-Minimal/init "$HOME/.config/river/init
+chmod +x "$HOME/.config/river/init"
+mkdir -p "$HOME/.config/gtk-3.0"
+
+
+
+
+
+
+echo "$SUCCESS Installation completed successfully!"
