@@ -1,0 +1,27 @@
+#!/bin/sh
+
+riverctl keybard-layout gb
+riverctl set-repeat 35 200
+
+riverctl map normal Super Return spawn foot
+riverctl map normal Super+Shift Q exit
+riverctl map normal Super Q close
+riverctl map normal Super F toggle-fullscreen
+riverctl xcursor-theme 'capitaine-cursors' 22
+riverctl focus-follows-cursor normal
+
+for i in $(seq 1 5)
+do
+   tags=$((1 << ($i -1)))
+   riverctl map normal Super $i set focused-tags $tags
+done
+
+riverctl background-color 0x002b36
+riverctl border-color-focused 0x93a1a1
+riverctl border-color-unfocused 0x586e75
+
+riverctl rule-add -app-id 'float*' -title 'foo' float
+riverctl rule-add -app-id "bar" csd
+
+riverctl default-layout rivertile
+rivertile -view-padding 4 -outer-padding 4 &
