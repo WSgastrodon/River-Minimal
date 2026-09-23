@@ -1,0 +1,21 @@
+{
+  "height": 32,
+  "spacing": 4,
+
+  "modules-left": [
+    "river/tags"
+  ],
+
+  "modules-right": [
+    "memory",
+    "battery",
+    "battery#bat2",
+    "network",
+    "clock",
+  ],
+
+  "river/tags": {
+    "disable-scroll": true,
+    "num-tags": 5,
+    "tag-labels": ["1", "2", "3", "4", "5"],
+  }
