@@ -13,7 +13,7 @@ riverctl focus-follows-cursor normal
 for i in $(seq 1 5)
 do
    tags=$((1 << ($i -1)))
-   riverctl map normal Super $i set focused-tags $tags
+   riverctl map normal Super $i set-focused-tags $tags
 done
 
 riverctl background-color 0x002b36
