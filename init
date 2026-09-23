@@ -25,3 +25,4 @@ riverctl rule-add -app-id "bar" csd
 
 riverctl default-layout rivertile
 rivertile -view-padding 4 -outer-padding 4 &
+waybar &
