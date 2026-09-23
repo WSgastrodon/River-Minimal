@@ -48,7 +48,7 @@
 
   "network": {
     "format-wifi": "{essid}",
-    "format-ethernet": "{ipaddr}",
+    "format-ethernet": "{essid}",
     "format-disconnected": "DC",
   },
 }
