@@ -9,8 +9,8 @@ button:hover {
   text-shadow: none;
   background: transparent;
   transition: none;
-  outline: none:
-  border: none:
+  outline: none;
+  border: none;
 }
 
 #tags button.focused {
@@ -36,14 +36,14 @@ window#waybar {
 #tags
 #clock {
   background-color: #080808;
-  margin-right: 10px :
+  margin-right: 10px ;
   min-width: 60px ;
   margin: 4px 4px ;
 }
 
 #network {
   background-color: #080808;
-  margin-right: 10px :
+  margin-right: 10px ;
   min-width: 75px ;
   margin: 4px 4px ;
 }
@@ -64,7 +64,7 @@ window#waybar {
 
 #network.disconnected {
   background-color: #080808;
-  margin-right: 10px :
+  margin-right: 10px ;
   min-width: 75px ;
   margin: 4px 4px ;
 }
