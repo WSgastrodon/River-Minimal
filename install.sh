@@ -18,7 +18,7 @@ mkdir -p ~/.config/gtk-3.0
 sudo rm -rf ~/.bash_profile
 mv ~/River-Minimal/.bash_profile ~/.bash_profile
 
-cp -r ~/River-Minimal/Waybar/  ~/.config/waybar/
+cp -r ~/River-Minimal/waybar/  ~/.config/waybar/
 
 
 echo " Installation completed successfully!"
