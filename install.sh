@@ -6,7 +6,7 @@ echo " Starting the environment installation..."
 
 echo " Installing system packages..."
 sudo pacman -Syu --needed --noconfirm 
-sudo pacman -S foot capitaine-cursors river-classic ttf-profont-nerd waybar
+sudo pacman -S foot capitaine-cursors river-classic ttf-profont-nerd waybar swaybg
 
 # Step 3: Create User Configuration Directories
 echo " Setting up configuration directories..."
