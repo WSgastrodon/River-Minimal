@@ -1,30 +1,26 @@
-nano
+doas apk add nano
 doas rm -rf /etc/apk/repositories
-doas touch /etc/apk/repositories
-echo #/media/cdrom/apks >> /etc/apk/repositories
-echo http://dl-cdn.alpinelinux.org/alpine/v3.24/main >> /etc/apk/repositories
-http://dl-cdn.alpinelinux.org/alpine/v3.24/community >> /etc/apk/repositories
+
+cat <<EOL | doas tee /repositories
+http://dl-cdn.alpinelinux.org/alpine/v3.24/main
+http://dl-cdn.alpinelinux.org/alpine/v3.24/community
+EOL
 
 
+doas apk add mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
 
-
-mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
-
-addgroup evan input
-addgroup evan video
-addgroup evan seat
+doas addgroup evan input
+doas addgroup evan video
+doas addgroup evan seat
 
 doas setup-devd udev
 doas setup-wayland-base
-rc-update add seatd boot
-rc-service seatd start
+doas rc-update add seatd boot
+doas rc-service seatd start
 
-install -Dm0755 /usr/share/doc/river/examples/init -t ~/.config/river
+doas install -Dm0755 /usr/share/doc/river/examples/init -t ~/.config/river
 
- 
-doas nano ~/.profile
-
-
+cat << 'EOL' >> ~/.profile
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/tmp/runtime-$(id -u)
     mkdir -p -m 0700 "$XDG_RUNTIME_DIR"
@@ -33,8 +29,7 @@ export MOZ_ENABLE_WAYLAND=1
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     WLR_RENDERER=pixman exec river -no-xwayland
 fi
+EOL
 
 
-
-source ~/.profile
-river -no-xwayland
+doas reboot
