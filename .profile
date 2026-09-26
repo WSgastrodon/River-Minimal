@@ -1,3 +1,5 @@
+doas ip link set usb0 up
+doas udhcpc -b -i usb0
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/tmp/runtime-$(id -u)
     mkdir -p -m 0700 "$XDG_RUNTIME_DIR"
