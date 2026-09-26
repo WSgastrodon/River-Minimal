@@ -1,4 +1,11 @@
 nano
+doas rm -rf /etc/apk/repositories
+echo #/media/cdrom/apks >> /etc/apk/repositories
+echo http://dl-cdn.alpinelinux.org/alpine/v3.24/main >> /etc/apk/repositories
+http://dl-cdn.alpinelinux.org/alpine/v3.24/community >> /etc/apk/repositories
+
+
+
 
 mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
 
