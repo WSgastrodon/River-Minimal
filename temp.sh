@@ -1,3 +1,6 @@
+#!/bin/sh
+
+
 doas apk add nano
 doas rm -rf /etc/apk/repositories
 
