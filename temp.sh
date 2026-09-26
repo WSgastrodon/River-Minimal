@@ -1,13 +1,6 @@
 #!/bin/sh
 
 
-doas apk add nano
-doas rm -rf /etc/apk/repositories
-
-cat <<EOL | doas tee /repositories
-http://dl-cdn.alpinelinux.org/alpine/v3.24/main
-http://dl-cdn.alpinelinux.org/alpine/v3.24/community
-EOL
 
 
 doas apk add mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
