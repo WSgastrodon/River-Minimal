@@ -13,7 +13,7 @@ doas setup-devd udev
 doas setup-wayland-base
 doas rc-update add seatd boot
 doas rc-service seatd start
-
+doas cp -r ~/River-Minimal/waybar ~/.config/waybar
 doas mv ~/River-Minimal/init ~/.config/river/init
 chmod +x ~/.config/river/init
 cat << 'EOL' >> ~/.profile
