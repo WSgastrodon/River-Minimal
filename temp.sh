@@ -3,7 +3,7 @@
 
 
 
-doas apk add mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
+doas apk add mesa-dri-gallium seatd river-classic foot adwaita-icon-theme font-dejavu dbus
 
 doas addgroup "$USER" input
 doas addgroup "$USER" video
