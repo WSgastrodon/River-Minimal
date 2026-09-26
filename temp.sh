@@ -14,8 +14,8 @@ doas setup-wayland-base
 doas rc-update add seatd boot
 doas rc-service seatd start
 
-doas install -Dm0755 /usr/share/doc/river/examples/init -t ~/.config/river
-
+doas mv ~/River-Minimal/init ~/.config/river/init
+chmod +x ~/.config/river/init
 cat << 'EOL' >> ~/.profile
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/tmp/runtime-$(id -u)
