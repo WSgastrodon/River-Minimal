@@ -26,3 +26,4 @@ riverctl rule-add -app-id "bar" csd
 riverctl default-layout rivertile
 rivertile -view-padding 2 -outer-padding 2 &
 riverctl spawn "dbus-run-session waybar" &
+riverctl spawn "swaybg -i ~/Pictures/walls/Sakura/JP02.png -m fill" &
