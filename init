@@ -25,4 +25,4 @@ riverctl rule-add -app-id "bar" csd
 
 riverctl default-layout rivertile
 rivertile -view-padding 2 -outer-padding 2 &
-dbus-run-session waybar &
+riverctl spawn "dbus-run-session waybar" &
