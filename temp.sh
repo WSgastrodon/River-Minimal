@@ -5,9 +5,9 @@
 
 doas apk add mesa-dri-gallium seatd river-classic river-classic-doc foot adwaita-icon-theme font-dejavu dbus
 
-doas addgroup evan input
-doas addgroup evan video
-doas addgroup evan seat
+doas addgroup "$USER" input
+doas addgroup "$USER" video
+doas addgroup "$USER" seat
 
 doas setup-devd udev
 doas setup-wayland-base
