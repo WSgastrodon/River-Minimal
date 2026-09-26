@@ -3,7 +3,7 @@
 
 
 
-doas apk add mesa-dri-gallium seatd river-classic foot adwaita-icon-theme font-dejavu dbus waybar
+doas apk add mesa-dri-gallium seatd river-classic foot adwaita-icon-theme font-dejavu dbus waybar swaybg
 
 doas addgroup "$USER" input
 doas addgroup "$USER" video
@@ -16,6 +16,8 @@ doas rc-service seatd start
 doas cp -r ~/River-Minimal/waybar ~/.config/waybar
 doas mv ~/River-Minimal/init ~/.config/river/init
 chmod +x ~/.config/river/init
+doas mkdir ~/Pictures
+doas cp -r ~/River-Minimal/walls ~/Pictures/walls
 cat << 'EOL' >> ~/.profile
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/tmp/runtime-$(id -u)
