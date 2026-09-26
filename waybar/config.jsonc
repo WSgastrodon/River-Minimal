@@ -1,54 +1,13 @@
 {
-  "height": 32,
+  "height": 20,
   "spacing": 4,
-
-  "modules-left": [
-    "river/tags"
-  ],
-
-  "modules-right": [
-    "memory",
-    "battery",
-    "battery#bat2",
-    "network",
+  "margin-top": 4,
+  
+  "modules-center": [
     "clock",
   ],
 
-  "river/tags": {
-    "disable-scroll": true,
-    "num-tags": 5,
-    "tag-labels": ["1", "2", "3", "4", "5"],
-    "disable-click": true,
-    "hide-vacant": false
-
-  },
-
   "clock": {
     "timezone": "Europe/London",
-  },
-    
-  "memory": {
-    "format": "{}%"
-  },
-
-  "battery": {
-    "states": {
-     "warning": 30,
-     "critical": 15
-    },
-    "format": "{capacity}%"
-    "format-full": "{capacity}%"
-    "format-charging": "{capacity}%"
-    "format-plugged": "{capacity}%"
-  }, 
-
-  "battery#bat2": {
-    "bat": "BAT2"
-  },
-
-  "network": {
-    "format-wifi": "{essid}",
-    "format-ethernet": "{ipaddr}",
-    "format-disconnected": "DC",
   },
 }
